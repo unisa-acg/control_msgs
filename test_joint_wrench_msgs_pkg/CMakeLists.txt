@@ -16,28 +16,28 @@ foreach(Dependency IN ITEMS ${THIS_PACKAGE_INCLUDE_DEPENDS})
   find_package(${Dependency} REQUIRED)
 endforeach()
 
-add_executable(test_joint_wrench_msgs_node src/test_joint_wrench_msgs_action_server_node.cpp)
+add_executable(test_joint_wrench_msgs_action_server_node src/test_joint_wrench_msgs_action_server_node.cpp)
 
-target_include_directories(test_joint_wrench_msgs_node PUBLIC
+target_include_directories(test_joint_wrench_msgs_action_server_node PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include/${PROJECT_NAME}>)
 
-ament_target_dependencies(test_joint_wrench_msgs_node
+ament_target_dependencies(test_joint_wrench_msgs_action_server_node
   ${THIS_PACKAGE_INCLUDE_DEPENDS}
 )
 
-target_compile_features(test_joint_wrench_msgs_node PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
+target_compile_features(test_joint_wrench_msgs_action_server_node PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
 
-add_executable(test_joint_wrench_msgs_client_node src/test_joint_wrench_msgs_action_client_node.cpp)
+add_executable(test_joint_wrench_msgs_action_client_node src/test_joint_wrench_msgs_action_client_node.cpp)
 
-target_include_directories(test_joint_wrench_msgs_client_node PUBLIC
+target_include_directories(test_joint_wrench_msgs_action_client_node PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include/${PROJECT_NAME}>)
-ament_target_dependencies(test_joint_wrench_msgs_client_node
+ament_target_dependencies(test_joint_wrench_msgs_action_client_node
   ${THIS_PACKAGE_INCLUDE_DEPENDS}
 )
 
-install(TARGETS test_joint_wrench_msgs_node test_joint_wrench_msgs_client_node
+install(TARGETS test_joint_wrench_msgs_action_server_node test_joint_wrench_msgs_action_client_node
   DESTINATION lib/${PROJECT_NAME})
 
 ament_package()

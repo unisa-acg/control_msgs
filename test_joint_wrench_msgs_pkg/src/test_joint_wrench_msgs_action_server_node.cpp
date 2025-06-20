@@ -39,10 +39,11 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char ** argv)
       return rclcpp_action::CancelResponse::ACCEPT;
     },
     [node](const std::shared_ptr<rclcpp_action::ServerGoalHandle<control_msgs::action::FollowJointWrenchTrajectory>> goal_handle) {
-      RCLCPP_INFO(node->get_logger(), "Executing goal");
       auto result = std::make_shared<control_msgs::action::FollowJointWrenchTrajectory::Result>();
       result->error_code = control_msgs::action::FollowJointWrenchTrajectory::Result::SUCCESSFUL;
       goal_handle->succeed(result);
+      RCLCPP_INFO(node->get_logger(), "Goal executed with success");
+      return rclcpp_action::ResultCode::SUCCEEDED;
     });
   RCLCPP_INFO(node->get_logger(), "Action server started, waiting for goals...");
 
