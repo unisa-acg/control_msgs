@@ -30,17 +30,6 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char ** argv)
   msg.points[1].wrench.torque.y = 4.0;
   msg.points[1].point.positions.push_back(2.5);
   msg.points[1].point.positions.push_back(3.5);
-  // RCLCPP_INFO(node->get_logger(), "JointWrenchTrajectory message created with %zu joints and %zu points.",
-  //             msg.joint_names.size(), msg.points.size());
-  // RCLCPP_INFO(node->get_logger(), "First point: time_from_start = %f, force.x = %.2f, torque.y = %.2f, positions = [%f, %f]",
-  //             msg.points[0].point.time_from_start.sec + msg.points[0].point.time_from_start.nanosec / 1e9,
-  //             msg.points[0].wrench.force.x, msg.points[0].wrench.torque.y,
-  //             msg.points[0].point.positions[0], msg.points[0].point.positions[1]);
-  // RCLCPP_INFO(node->get_logger(), "Second point: time_from_start = %f, force.x = %.2f, torque.y = %.2f, positions = [%f, %f]",
-  //             msg.points[1].point.time_from_start.sec + msg.points[1].point.time_from_start.nanosec / 1e9,
-  //             msg.points[1].wrench.force.x, msg.points[1].wrench.torque.y,
-  //             msg.points[1].point.positions[0], msg.points[1].point.positions[1]);
-  // RCLCPP_INFO(node->get_logger(), "JointWrenchTrajectory message test completed successfully.");
 
   // Create an action client to test the JointWrenchTrajectory message
   auto action_client = rclcpp_action::create_client<control_msgs::action::FollowJointWrenchTrajectory>(
